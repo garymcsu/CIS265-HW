@@ -1,5 +1,6 @@
 abstract class FirstClass{
  public abstract String sayHello();
+ public abstract String anotherMethod();
 }
 
 
