@@ -1,5 +1,14 @@
+abstract class FirstClass{
+ public abstract String sayHello();
+}
+
+
 public class MyClass {
  public static void main(String[] args){
- System.out.println("Hello World");
+
+ ExtendedClass objectToSayHello = new ExtendedClass(); 
+String message = objectToSayHello.sayHello();
+ System.out.println(message);
  }
 }
+
