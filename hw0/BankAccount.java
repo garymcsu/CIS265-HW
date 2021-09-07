@@ -3,6 +3,8 @@ public abstract class BankAccount {
     protected String lastName;
     protected int ssn;
 
-    // TODO implement code
+    abstract void deposit(double amount);
+
+    public abstract boolean withdraw(double amount);
 }
 
