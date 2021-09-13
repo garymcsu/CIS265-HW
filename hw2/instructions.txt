@@ -1,0 +1,67 @@
+1. Exception.
+A heart rate data file " HR.txt Open this document with ReadSpeaker docReader" , which records hundreds of heart rate readings (in integer), is contaminated (by viruses) and many illegal data (unknown data type) are inserted. Write a program "HeartRate.java" to read the data file and output the number of good readings as well as the number of bad data. The definition is described as follows:
+Good data: any positive integer reading.
+Bad data:
+(1) Any non-integer reading;
+(2) Any negative (integer) reading.
+
+In your program, you need two exceptions to handle two kinds of bad data.
+For the non-integer reading, you can use nextInt() method to read an integer from the file, if the data is not an integer, InputMismatchException will be thrown. Your program must catch this exception.
+To handle the negative reading, you may want to declare your own Exception class: HRIllegalValueException (you are expected to write HRIllegalValueException.java that contains the class), and threw this exception when a negative value is read.
+Note: your program should not terminate when a bad data is read. Therefore, you must use try/catch block to handle the bad data. Your program is expected to print out (on the screen) the number of good HR readings and the number of bad data.
+A sample execution trace:
+$ java HeartRate
+
+HRIllegaValueException: cannot be negative.
+HRIllegaValueException: cannot be negative.
+Good Data: 24
+Bad Data: 6
+Requirements:
+Files to be submitted: HeartRate.java, HRIllegalValueException.java, and HR.txt.
+The main method of HeartRate class should look like:
+public static void main(String[] args) throws IOException {
+}
+You can use FileReader and Scanner to handle the data input from a file.
+Scanner input = new Scanner(new FileReader("HR.txt"));
+The file "HR.txt" must be at the same directory of our source code. To use Scanner and FileReader, you must import four classes as follows:
+import java.io.IOException;
+import java.util.InputMismatchException;
+import java.io.FileReader;
+import java.util.Scanner;
+Note that you are not allowed to import any other Java classes.
+The nextInt() method will throw out an InputMismatchException if the read data is not int type. You may assume all good readings are int type, and the bad data are other types. A try/catch block should be good enough to handle this problem. Yes, you really want to catch InputMismatchException in your catch block.
+When a non-integer is read by nextInt() method, an InputMismatachException is thrown. The bad data (a non-integer), however, has not been consumed yet, it is your responsibility to consume this data so that the next data can be read. Otherwise, your program will be always stuck at the bad data and cause an infinite loop.
+2. Recursion: A word is considered elfish if it contains the letters: e, l, and f in it, in any order. For example, we would say that the following words are elfish: whiteleaf, tasteful, unfriendly, and waffles, because they each contain those letters.
+Write a recursive method called elfish(), that, given a word, tells us whether or not that word is elfish. The signature of the method should be:
+public static boolean elfish(String word)
+Write a more generalized recursive method called x-ish. That, given two words, returns true if all the letters of the first word are contained in the second. The signature of the method should be:
+public static boolean xish(String x, String word)
+Sample Outputs:
+Suppose the test program is Testish class, the sample outputs are:
+$ java Testish unfriendly
+unfriendly is elfish
+
+$ java Testish elf unfriendly
+unfriendly contains elf
+
+$ java Testish els unfriendly
+unfriendly does not contain els
+
+$ java Testish
+Please provide one or two strings
+Requirements:
+Files to be submitted: Testish.java.
+String input: the user provide the strings via command line arguments.
+If there is no argument provided, your program terminates with a user friendly message informing the user that at least one string is expected (see above sample output).
+If there is one argument provided, your program will treat it as elfish test and check whether or not the provided string contains e, l, and f.
+If there are at least two arguments provided, only the first two are used. Your program will perform xish check: whether the second string contains the first string.
+Make sure method elfish() and xish() are recursive. Any non-recursive() implementation will receive zero credit.
+String is provided in java.lang package, which is included by default. Your program is not allowed to import any other class in this assignment.
+Hints:
+The key to design a recursive method is to (1) have the method call itself and (2) establish a base case. Considering the generic case with two input strings s1 and s2, the basic idea is to linearly scan string s1 one character (starting from the leftmost one) at a time and try to find a matching character in string s2. A failure will indicate a false result. A success then will continue with a recursive method call: move the character pointer of s1 to one position to the right and repeat the above process. Obviously, the base case of this recursion is when the character pointer of s1 is pointing to the end of s1 (you should return true in this case, why?).
+You are allowed to use any method defined in Java String class. These methods can be found at Java String API. In particular, you may find the following methods useful:
+charAt();
+indexOf();
+isEmpty();
+length();
+substring().
