@@ -1,2 +1,2 @@
-public class QueueFullException extends Exception{
+public class QueueFullException extends Exception {
 }

@@ -8,6 +8,7 @@ public class LLQueue implements IQueue {
     public int size() {
         // your implementation
     }
+
     public boolean isEmpty() {
         // your implementation
     }
