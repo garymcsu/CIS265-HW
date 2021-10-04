@@ -52,7 +52,7 @@ public class SinglyLL {
         size++;
     }
 
-    public void addLost(Object e) {
+    public void addLast(Object e) {
         LLNode newTail = new LLNode(e, null);
         if (isEmpty()) head = newTail;
         else
